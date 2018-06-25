@@ -10,9 +10,9 @@ This function takes 2 vectors of the same length and computes the dot product. F
   #Check if input is valid
   if len(vector1) == len(vector2):
     solution = 0
-    #zip accepts 2 lists of the same length and pairs the elements
-    for i,j in zip(vector1,vector2):
-      solution += i*j
+    #Checks each element of vector1
+    for i in range(len(vector1)):
+      solution += vector1[i] * vector2[i]
     return solution
   else:
     return "The input is invalid"
@@ -61,11 +61,12 @@ def infNorm(vector1):
 This function takes one vector as its argument and computes the infinity norm of that vector. This is done by essentially calculating the max value of the vector. A maximum integer is set at 0 and forloop updates the value of the maximum to any value that is greater than the previous element inside the vector
   '''
   maximum = 0
-  for i in vector1:
+  for i in range(len(vector1)):
     #if the element is more than 0 the max becomes that value
-    if i > maximum:
-      maximum = i
-  return maximum
+    if abs(vector1[i]) > maximum:
+      maximum = abs(vector1[i])
+    return maximum
+  
 
 #Normalize takes a vector and returns the normalized vector with respect to the infinity norm 
 #[(1/infNorm(vector1))*(vector1)]
